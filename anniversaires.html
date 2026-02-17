@@ -1,0 +1,897 @@
+<!-- birthdays.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthdays - IYAR IYO CARUR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 5%;
+            background-color: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: #f39c12;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #f39c12;
+        }
+
+        .nav-links a.active {
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 0.3rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e3c72;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 50vh;
+            background: linear-gradient(rgba(30,60,114,0.7), rgba(30,60,114,0.8)), url('images/chateau1.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, #fff, #f0f4f8);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3c72, #f39c12);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #636e72;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 60px rgba(30,60,114,0.2);
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border: 3px solid #f39c12;
+            box-shadow: 0 25px 50px rgba(243,156,18,0.3);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.07) translateY(-10px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f39c12;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(243,156,18,0.4);
+            z-index: 1;
+        }
+
+        .pricing-header {
+            background: linear-gradient(135deg, #1e3c72, #2a4a7a);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:nth-child(1) .pricing-header {
+            background: linear-gradient(135deg, #1e3c72, #2a4a7a);
+        }
+
+        .pricing-card:nth-child(2) .pricing-header {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        .pricing-card:nth-child(3) .pricing-header {
+            background: linear-gradient(135deg, #1e3c72, #f39c12);
+        }
+
+        .pricing-header h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .pricing-body {
+            padding: 2.5rem 2rem;
+        }
+
+        .pricing-body ul {
+            list-style: none;
+        }
+
+        .pricing-body ul li {
+            margin-bottom: 1.2rem;
+            color: #636e72;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-body ul li i {
+            color: #1e3c72;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .pricing-body ul li.unavailable {
+            color: #b2bec3;
+            text-decoration: line-through;
+        }
+
+        .pricing-body ul li.unavailable i {
+            color: #ff6b6b;
+        }
+
+        .pricing-footer {
+            padding: 0 2rem 2.5rem;
+            text-align: center;
+        }
+
+        .btn-pricing {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #1e3c72, #2a4a7a);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(30,60,114,0.3);
+            width: 100%;
+        }
+
+        .btn-pricing:hover {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(243,156,18,0.4);
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .option-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            border-color: #f39c12;
+            box-shadow: 0 20px 40px rgba(243,156,18,0.1);
+        }
+
+        .option-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e3c72, #2a4a7a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .option-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .option-card p {
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .option-price {
+            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f39c12;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a4a7a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .testimonial-card i {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 2px solid #f39c12;
+        }
+
+        .testimonial-author h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-author p {
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e3c72;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f39c12;
+        }
+
+        .footer-section p {
+            color: #b2bec3;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+            color: #b2bec3;
+        }
+
+        .footer-section ul li i {
+            color: #f39c12;
+            margin-right: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #b2bec3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #f39c12;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #f39c12;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #b2bec3;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item.large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo-container">
+            <img src="images/logo.jpeg" alt="IYAR IYO CARUR Logo" class="logo-img">
+            <a href="index.html" class="logo-text">IYAR IYO <span>CARUR</span></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+              <a href="index.html">Home</a>
+            <a href="activites.html">Activities</a>
+            <a href="anniversaires.html">Birthdays</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <h1>Parties & Birthdays</h1>
+            <p>Create unforgettable memories for your child in our dedicated space</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <h2 class="section-title">Our Birthday Packages</h2>
+        <p class="section-subtitle">Packages adapted to all ages and budgets for a magical moment</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Discovery</h3>
+                    <div class="pricing-price">$150<span>/group</span></div>
+                </div>
+                <div class="pricing-body">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Park access for 2 hours</li>
+                        <li><i class="fas fa-check"></i> 1 dedicated host</li>
+                        <li><i class="fas fa-check"></i> Private party space</li>
+                        <li><i class="fas fa-check"></i> Up to 8 children</li>
+                        <li><i class="fas fa-check"></i> Snack included (drink + cake)</li>
+                        <li><i class="fas fa-times unavailable"></i> Room decoration</li>
+                        <li><i class="fas fa-times unavailable"></i> Photographer</li>
+                    </ul>
+                </div>
+                <div class="pricing-footer">
+                    <a href="contact.html?form=discovery" class="btn-pricing">Book Now</a>
+                </div>
+            </div>
+
+            <div class="pricing-card popular">
+                <div class="popular-badge">🍭 Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Premium</h3>
+                    <div class="pricing-price">$250<span>/group</span></div>
+                </div>
+                <div class="pricing-body">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Park access for 3 hours</li>
+                        <li><i class="fas fa-check"></i> 2 dedicated hosts</li>
+                        <li><i class="fas fa-check"></i> Private VIP room</li>
+                        <li><i class="fas fa-check"></i> Up to 15 children</li>
+                        <li><i class="fas fa-check"></i> Full meal (pizza, drinks, cake)</li>
+                        <li><i class="fas fa-check"></i> Themed decoration included</li>
+                        <li><i class="fas fa-check"></i> Goody bags included</li>
+                    </ul>
+                </div>
+                <div class="pricing-footer">
+                    <a href="contact.html?form=premium" class="btn-pricing">Book Now</a>
+                </div>
+            </div>
+
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Prestige</h3>
+                    <div class="pricing-price">$350<span>/group</span></div>
+                </div>
+                <div class="pricing-body">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Park access for 4 hours</li>
+                        <li><i class="fas fa-check"></i> 3 dedicated hosts</li>
+                        <li><i class="fas fa-check"></i> Prestige Suite with terrace</li>
+                        <li><i class="fas fa-check"></i> Up to 20 children</li>
+                        <li><i class="fas fa-check"></i> Buffet for children and adults</li>
+                        <li><i class="fas fa-check"></i> Custom decoration</li>
+                        <li><i class="fas fa-check"></i> Photographer + souvenir video</li>
+                        <li><i class="fas fa-check"></i> Magician or show of choice</li>
+                    </ul>
+                </div>
+                <div class="pricing-footer">
+                    <a href="contact.html?form=prestige" class="btn-pricing">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <h2 class="section-title">Birthday Memories</h2>
+        <p class="section-subtitle">Magical moments experienced in our space</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item large">
+                <img src="images/anniv.jpg" alt="Birthday celebration">
+            </div>
+            <div class="gallery-item">
+                <img src="images/employersecure.jpeg" alt="Birthday cake">
+            </div>
+            <div class="gallery-item">
+                <img src="images/petitdstobogan (1).jpeg" alt="Children playing">
+            </div>
+            <div class="gallery-item">
+                <img src="images/chateau2.jpeg" alt="Birthday decoration">
+            </div>
+            <div class="gallery-item">
+                <img src="images/secure3.jpeg" alt="Host with children">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Add-on Options</h2>
+        <p class="section-subtitle">Personalize your party with our additional options</p>
+        
+        <div class="options-grid">
+            <div class="option-card">
+                <div class="option-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Magic Show</h3>
+                <p>Professional magician to amaze children with interactive tricks</p>
+                <div class="option-price">+$80</div>
+            </div>
+            <div class="option-card">
+                <div class="option-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Face Painting</h3>
+                <p>Face painter to transform children into their favorite heroes</p>
+                <div class="option-price">+$60</div>
+            </div>
+            <div class="option-card">
+                <div class="option-icon">
+                    <i class="fas fa-balloon"></i>
+                </div>
+                <h3>Balloon Artist</h3>
+                <p>Balloon sculptures to create animals and characters</p>
+                <div class="option-price">+$50</div>
+            </div>
+            <div class="option-card">
+                <div class="option-icon">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <h3>Photo Souvenirs</h3>
+                <p>Personalized photo album of the party + all digital photos</p>
+                <div class="option-price">+$40</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <h2 class="section-title" style="color: white;">What They Say About Us</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Parents and children won over by their experience</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>An unforgettable birthday for my 5-year-old daughter! The team was so caring and the children had a blast.</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="Marie">
+                    <div>
+                        <h4>Marie L.</h4>
+                        <p>Mother of Léa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>The Premium package is perfect! Nothing to manage, everything was perfect from welcome to snacks. The children didn't want to leave!</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" alt="Thomas">
+                    <div>
+                        <h4>Thomas D.</h4>
+                        <p>Father of Hugo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>The VIP room is beautiful and the hosts are great. We'll come back without hesitation for the next birthday!</p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100" alt="Sophie">
+                    <div>
+                        <h4>Sophie M.</h4>
+                        <p>Mother of twins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>IYAR IYO CARUR</h3>
+                <p>Children's paradise within reach. A safe and fun indoor play space for children aged 0-12 years.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="birthdays.html">Birthdays</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul>
+                    <li>Monday - Friday: 10am - 7pm</li>
+                    <li>Saturday: 9am - 8pm</li>
+                    <li>Sunday: 9am - 6pm</li>
+                    <li>Closed on Tuesdays</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +252 63 1234567</li>
+                    <li><i class="fas fa-envelope"></i> info@iyariyocarur.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jig Jigga Yar, Hargeisa, Somaliland</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 IYAR IYO CARUR - All rights reserved. Made with <i class="fas fa-heart" style="color: #f39c12;"></i> for children</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pricing-card, .option-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

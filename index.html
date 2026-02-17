@@ -1,0 +1,754 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IYAR IYO CARUR - Indoor Playground for Kids</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            background-color: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 5%;
+            background-color: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: #f39c12;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f39c12;
+        }
+
+        .nav-links a.active {
+            color: #f39c12;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 0.3rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e3c72;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            animation: zoomIn 20s infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(30,60,114,0.4), rgba(30,60,114,0.7));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(243,156,18,0.4);
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(243,156,18,0.5);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: #1e3c72;
+            border-color: white;
+        }
+
+        /* Sections alternées */
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-alt {
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #636e72;
+            margin-bottom: 3rem;
+        }
+
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .split-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-content h2 {
+            font-size: 2.2rem;
+            color: #f39c12;
+            margin-bottom: 1.5rem;
+        }
+
+        .split-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #636e72;
+            margin-bottom: 1.5rem;
+        }
+
+        .split-content ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .split-content ul li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            color: #2d3436;
+        }
+
+        .split-content ul li i {
+            color: #1e3c72;
+            margin-right: 0.8rem;
+        }
+
+        .split-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .split-image:hover {
+            transform: scale(1.02);
+        }
+
+        .split-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Features / Avantages */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: #f39c12;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: #1e3c72;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .feature-card p {
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e3c72;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #f39c12;
+        }
+
+        .footer-section p {
+            color: #b2bec3;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+            color: #b2bec3;
+        }
+
+        .footer-section ul li i {
+            color: #f39c12;
+            margin-right: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #b2bec3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #f39c12;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #f39c12;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #b2bec3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem 5%;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem;
+                text-align: center;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .split-section {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .split-section.reverse {
+                flex-direction: column;
+            }
+
+            .split-image img {
+                height: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo-container">
+            <img src="images/logo.jpeg" alt="IYAR IYO CARUR Logo" class="logo-img">
+            <a href="index.html" class="logo-text">IYAR IYO <span>CARUR</span></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+              <a href="index.html">Home</a>
+            <a href="activites.html">Activities</a>
+            <a href="anniversaires.html">Birthdays</a>
+            <a href="contact.html" class="active">Contact</a>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="images/petitdstobogan (2).jpeg" alt="Indoor Playground" class="hero-image">
+        <div class="hero-content">
+            <h1>Adventure Starts Here!</h1>
+            <p>The largest indoor playground for children aged 0-12 years. Slides, ball pits, climbing structures and much more!</p>
+            <div>
+                <a href="#discover" class="btn">Discover</a>
+                <a href="contact.html" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <h2 class="section-title">Why Choose IYAR IYO CARUR?</h2>
+        <p class="section-subtitle">A unique play universe for the happiness of little ones and peace of mind for parents</p>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Maximum Safety</h3>
+                <p>European standard equipment, trained staff and constant supervision for worry-free play.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h3>Private Spaces</h3>
+                <p>Dedicated rooms for your birthdays and events, with packages adapted for all ages.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Snack Area</h3>
+                <p>A friendly space for parents with hot drinks and snacks for children.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-parking"></i>
+                </div>
+                <h3>Free Parking</h3>
+                <p>Large free parking available to facilitate your visit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide Section (Image left, text right) -->
+    <section class="section section-alt" id="discover">
+        <div class="split-section">
+            <div class="split-image">
+                <img src="images/toboganpiscineboule.jpeg" alt="Giant Slide">
+            </div>
+            <div class="split-content">
+                <h2>Giant Slides</h2>
+                <p>Discover our thrilling slides that will delight little adventurers! Gentle slopes for the little ones to dizzying slides for the older ones, there's something for everyone.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> 6-meter spiral slide</li>
+                    <li><i class="fas fa-check"></i> Wave slide for sensations</li>
+                    <li><i class="fas fa-check"></i> Double slide for races</li>
+                    <li><i class="fas fa-check"></i> Slide adapted for toddlers</li>
+                </ul>
+                <a href="activities.html" class="btn">See All Activities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ball Pit Section (Image right, text left) -->
+    <section class="section">
+        <div class="split-section reverse">
+            <div class="split-image">
+                <img src="images/piscineboulecarre.jpeg" alt="Ball Pit">
+            </div>
+            <div class="split-content">
+                <h2>Giant Ball Pit</h2>
+                <p>Dive into an ocean of colors! Our ball pit is the favorite attraction for toddlers. With over 50,000 balls, it's a true paradise for the senses.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Over 50,000 colorful balls</li>
+                    <li><i class="fas fa-check"></i> Certified safe balls</li>
+                    <li><i class="fas fa-check"></i> Interactive games integrated</li>
+                    <li><i class="fas fa-check"></i> Daily cleaning and disinfection</li>
+                </ul>
+                <a href="activities.html" class="btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Climbing Structure Section (Image left, text right) -->
+    <section class="section section-alt">
+        <div class="split-section">
+            <div class="split-image">
+                <img src="images/murgrimper1.jpeg" alt="Climbing Structure">
+            </div>
+            <div class="split-content">
+                <h2>Climbing Structures</h2>
+                <p>Climb, explore, conquer! Our multi-level climbing structures offer hours of adventure with nets, tunnels, monkey bridges and secret hiding places.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Secure climbing course</li>
+                    <li><i class="fas fa-check"></i> Protective nets everywhere</li>
+                    <li><i class="fas fa-check"></i> Tunnels and walkways</li>
+                    <li><i class="fas fa-check"></i> Age-adapted zones</li>
+                </ul>
+                <a href="activities.html" class="btn">Discover Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Section (Image right, text left) -->
+    <section class="section">
+        <div class="split-section reverse">
+            <div class="split-image">
+                <img src="images/manege2.jpeg" alt="Children's Carousel">
+            </div>
+            <div class="split-content">
+                <h2>Enchanted Carousel</h2>
+                <p>Take a ride on our magnificent carousel! Horses, cars and fantastic animals spin to upbeat music for the delight of little ones.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Carousel adapted for 0-6 years</li>
+                    <li><i class="fas fa-check"></i> 12 seats</li>
+                    <li><i class="fas fa-check"></i> Music and lights</li>
+                    <li><i class="fas fa-check"></i> Runs continuously</li>
+                </ul>
+                <a href="activities.html" class="btn">See Carousel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bouncy Castle Section (Image left, text right) -->
+    <section class="section section-alt">
+        <div class="split-section">
+            <div class="split-image">
+                <img src="images/chateau1.jpeg" alt="Bouncy Castle">
+            </div>
+            <div class="split-content">
+                <h2>Bouncy Castles</h2>
+                <p>Jump, bounce and have fun in our giant bouncy castles! An activity that develops motor skills while having fun.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Multi-activity inflatable structures</li>
+                    <li><i class="fas fa-check"></i> Integrated slides</li>
+                    <li><i class="fas fa-check"></i> Secure jumping zones</li>
+                    <li><i class="fas fa-check"></i> Constant supervision</li>
+                </ul>
+                <a href="activities.html" class="btn">Discover Structures</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>IYAR IYO CARUR</h3>
+                <p>Children's paradise within reach. A safe and fun indoor play space for children aged 0-12 years.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="birthdays.html">Birthdays</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul>
+                    <li>Monday - Friday: 10am - 7pm</li>
+                    <li>Saturday: 9am - 8pm</li>
+                    <li>Sunday: 9am - 6pm</li>
+                    <li>Closed on Tuesdays</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +252 63 1234567</li>
+                    <li><i class="fas fa-envelope"></i> info@iyariyocarur.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jig Jigga Yar, Hargeisa, Somaliland</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 IYAR IYO CARUR - All rights reserved. Made with <i class="fas fa-heart" style="color: #f39c12;"></i> for children</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Active link highlighting
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
