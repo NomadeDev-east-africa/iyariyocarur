@@ -1,99 +1,84 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IYAR IYO CARUR - Indoor Playground for Kids</title>
+
+    <!-- SEO -->
+    <title>Ciyaar & Caruur — Indoor Playground for Kids in Hargeisa, Somaliland</title>
+    <meta name="description" content="Hargeisa's premier indoor playground for children aged 1-10. Giant slides, ball pits, climbing structures, carousels and birthday party packages. Located in Jig Jigga Yar, Somaliland.">
+    <meta name="keywords" content="indoor playground Hargeisa, children play area Somaliland, birthday party Hargeisa, Ciyaar & Caruur, C&C playground, kids activities Hargeisa, ciyalcarur">
+    <meta name="author" content="Ciyaar & Caruur">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ciyalcarur.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ciyaar & Caruur — Indoor Playground for Kids in Hargeisa">
+    <meta property="og:description" content="Hargeisa's premier indoor playground for children aged 1-10. Slides, ball pits, birthday parties and more!">
+    <meta property="og:image" content="https://ciyalcarur.com/images/toboganpiscineboule.jpeg">
+    <meta property="og:url" content="https://ciyalcarur.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Ciyaar & Caruur">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ciyaar & Caruur — Indoor Playground for Kids in Hargeisa">
+    <meta name="twitter:description" content="Hargeisa's premier indoor playground for children aged 1-10.">
+    <meta name="twitter:image" content="https://ciyalcarur.com/images/toboganpiscineboule.jpeg">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AmusementPark",
+        "name": "Ciyaar & Caruur",
+        "alternateName": "C&C Playground",
+        "url": "https://ciyalcarur.com",
+        "logo": "https://ciyalcarur.com/images/logo.jpeg",
+        "image": "https://ciyalcarur.com/images/toboganpiscineboule.jpeg",
+        "description": "Indoor playground for children aged 1-10 years in Hargeisa, Somaliland. Giant slides, ball pits, climbing structures, carousels and birthday party packages.",
+        "telephone": "+252631234567",
+        "email": "info@ciyalcarur.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jig Jigga Yar",
+            "addressLocality": "Hargeisa",
+            "addressRegion": "Somaliland"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday","Sunday","Monday","Tuesday","Wednesday"],
+                "opens": "16:00",
+                "closes": "22:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Thursday","Friday"],
+                "opens": "09:00",
+                "closes": "12:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Thursday","Friday"],
+                "opens": "16:00",
+                "closes": "22:00"
+            }
+        ],
+        "sameAs": [
+            "https://www.facebook.com/share/p/1DdXGeNtMn/",
+            "https://www.instagram.com/p/DcbT_TANIys/?stkn=ZXRvbnE1bGNtM3h5",
+            "https://www.tiktok.com/@ciyaar.iyo.caruur?_r=1&_t=ZS-9A5QrA6UyNZ",
+            "https://www.youtube.com/@CiyaarcaruurPlayground"
+        ]
+    }
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 5%;
-            background-color: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 0.5rem 5%;
-            background-color: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-img {
-            height: 50px;
-            width: auto;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1e3c72;
-            text-decoration: none;
-        }
-
-        .logo-text span {
-            color: #f39c12;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #2d3436;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #f39c12;
-        }
-
-        .nav-links a.active {
-            color: #f39c12;
-            border-bottom: 3px solid #f39c12;
-            padding-bottom: 0.3rem;
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #1e3c72;
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
             height: 100vh;
             position: relative;
@@ -124,10 +109,8 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(rgba(30,60,114,0.4), rgba(30,60,114,0.7));
             z-index: 0;
         }
@@ -141,14 +124,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
@@ -163,134 +140,13 @@
             text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background-color: #f39c12;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(243,156,18,0.4);
-        }
-
-        .btn:hover {
-            background-color: #e67e22;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(243,156,18,0.5);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid white;
-            box-shadow: none;
-            margin-left: 1rem;
-        }
-
-        .btn-outline:hover {
-            background-color: white;
-            color: #1e3c72;
-            border-color: white;
-        }
-
-        /* Sections alternées */
-        .section {
-            padding: 5rem 5%;
-        }
-
-        .section-alt {
-            background-color: white;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #1e3c72;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #636e72;
-            margin-bottom: 3rem;
-        }
-
-        .split-section {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .split-section.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .split-content {
-            flex: 1;
-        }
-
-        .split-content h2 {
-            font-size: 2.2rem;
-            color: #f39c12;
-            margin-bottom: 1.5rem;
-        }
-
-        .split-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #636e72;
-            margin-bottom: 1.5rem;
-        }
-
-        .split-content ul {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .split-content ul li {
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-            color: #2d3436;
-        }
-
-        .split-content ul li i {
-            color: #1e3c72;
-            margin-right: 0.8rem;
-        }
-
-        .split-image {
-            flex: 1;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .split-image:hover {
-            transform: scale(1.02);
-        }
-
-        .split-image img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Features / Avantages */
+        /* Features */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 3rem auto 0;
         }
 
         .feature-card {
@@ -332,180 +188,99 @@
             line-height: 1.6;
         }
 
-        /* Footer */
-        footer {
-            background-color: #1e3c72;
-            color: white;
-            padding: 4rem 5% 2rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+        /* Split sections */
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .footer-section h3 {
-            font-size: 1.5rem;
+        .split-section.reverse { flex-direction: row-reverse; }
+
+        .split-content { flex: 1; }
+
+        .split-content h2 {
+            font-size: 2.2rem;
+            color: #f39c12;
             margin-bottom: 1.5rem;
-            color: #f39c12;
         }
 
-        .footer-section p {
-            color: #b2bec3;
+        .split-content p {
+            font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 1rem;
+            color: #636e72;
+            margin-bottom: 1.5rem;
         }
 
-        .footer-section ul {
-            list-style: none;
-        }
+        .split-content ul { list-style: none; margin-bottom: 2rem; }
 
-        .footer-section ul li {
+        .split-content ul li {
             margin-bottom: 0.8rem;
-            color: #b2bec3;
+            font-size: 1.1rem;
+            color: #2d3436;
         }
 
-        .footer-section ul li i {
-            color: #f39c12;
-            margin-right: 0.5rem;
+        .split-content ul li i {
+            color: #1e3c72;
+            margin-right: 0.8rem;
         }
 
-        .footer-section ul li a {
-            color: #b2bec3;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .split-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .footer-section ul li a:hover {
-            color: #f39c12;
+        .split-image:hover { transform: scale(1.02); }
+
+        .split-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
         }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: #f39c12;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #b2bec3;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 0.8rem 5%;
-            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
 
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 2rem;
-                text-align: center;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .split-section {
+            .split-section,
+            .split-section.reverse {
                 flex-direction: column;
                 gap: 2rem;
             }
 
-            .split-section.reverse {
-                flex-direction: column;
-            }
-
-            .split-image img {
-                height: 300px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .logo-img {
-                height: 40px;
-            }
-            
-            .logo-text {
-                font-size: 1.2rem;
-            }
+            .split-image img { height: 300px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="logo-container">
-            <img src="images/logo.jpeg" alt="IYAR IYO CARUR Logo" class="logo-img">
-            <a href="index.html" class="logo-text">IYAR IYO <span>CARUR</span></a>
+            <img src="images/logo.jpeg" alt="Ciyaar & Caruur Logo" class="logo-img">
+            <a href="index.html" class="logo-text">Ciyaar &amp; <span>Caruur</span></a>
         </div>
         <div class="nav-links" id="navLinks">
-              <a href="index.html">Home</a>
+            <a href="index.html" class="active">Home</a>
             <a href="activites.html">Activities</a>
             <a href="anniversaires.html">Birthdays</a>
-            <a href="contact.html" class="active">Contact</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <i class="fas fa-bars"></i>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="images/petitdstobogan (2).jpeg" alt="Indoor Playground" class="hero-image">
+        <img src="images/petitdstobogan (2).jpeg" alt="Indoor Playground Ciyaar & Caruur Hargeisa" class="hero-image">
         <div class="hero-content">
             <h1>Adventure Starts Here!</h1>
-            <p>The largest indoor playground for children aged 0-12 years. Slides, ball pits, climbing structures and much more!</p>
+            <p>The largest indoor playground for children aged 1-10 years. Slides, ball pits, climbing structures and much more!</p>
             <div>
                 <a href="#discover" class="btn">Discover</a>
                 <a href="contact.html" class="btn btn-outline">Contact Us</a>
@@ -513,47 +288,37 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="section">
-        <h2 class="section-title">Why Choose IYAR IYO CARUR?</h2>
+        <h2 class="section-title">Why Choose Ciyaar & Caruur?</h2>
         <p class="section-subtitle">A unique play universe for the happiness of little ones and peace of mind for parents</p>
         <div class="features">
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                 <h3>Maximum Safety</h3>
                 <p>European standard equipment, trained staff and constant supervision for worry-free play.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-birthday-cake"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-birthday-cake"></i></div>
                 <h3>Private Spaces</h3>
                 <p>Dedicated rooms for your birthdays and events, with packages adapted for all ages.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-utensils"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-utensils"></i></div>
                 <h3>Snack Area</h3>
                 <p>A friendly space for parents with hot drinks and snacks for children.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-parking"></i>
-                </div>
+                <div class="feature-icon"><i class="fas fa-parking"></i></div>
                 <h3>Free Parking</h3>
                 <p>Large free parking available to facilitate your visit.</p>
             </div>
         </div>
     </section>
 
-    <!-- Slide Section (Image left, text right) -->
     <section class="section section-alt" id="discover">
         <div class="split-section">
             <div class="split-image">
-                <img src="images/toboganpiscineboule.jpeg" alt="Giant Slide">
+                <img src="images/toboganpiscineboule.jpeg" alt="Giant Slide Ciyaar & Caruur">
             </div>
             <div class="split-content">
                 <h2>Giant Slides</h2>
@@ -564,16 +329,15 @@
                     <li><i class="fas fa-check"></i> Double slide for races</li>
                     <li><i class="fas fa-check"></i> Slide adapted for toddlers</li>
                 </ul>
-                <a href="activities.html" class="btn">See All Activities</a>
+                <a href="activites.html" class="btn">See All Activities</a>
             </div>
         </div>
     </section>
 
-    <!-- Ball Pit Section (Image right, text left) -->
     <section class="section">
         <div class="split-section reverse">
             <div class="split-image">
-                <img src="images/piscineboulecarre.jpeg" alt="Ball Pit">
+                <img src="images/piscineboulecarre.jpeg" alt="Ball Pit Ciyaar & Caruur">
             </div>
             <div class="split-content">
                 <h2>Giant Ball Pit</h2>
@@ -584,16 +348,15 @@
                     <li><i class="fas fa-check"></i> Interactive games integrated</li>
                     <li><i class="fas fa-check"></i> Daily cleaning and disinfection</li>
                 </ul>
-                <a href="activities.html" class="btn">Learn More</a>
+                <a href="activites.html" class="btn">Learn More</a>
             </div>
         </div>
     </section>
 
-    <!-- Climbing Structure Section (Image left, text right) -->
     <section class="section section-alt">
         <div class="split-section">
             <div class="split-image">
-                <img src="images/murgrimper1.jpeg" alt="Climbing Structure">
+                <img src="images/murgrimper1.jpeg" alt="Climbing Structure Ciyaar & Caruur">
             </div>
             <div class="split-content">
                 <h2>Climbing Structures</h2>
@@ -604,16 +367,15 @@
                     <li><i class="fas fa-check"></i> Tunnels and walkways</li>
                     <li><i class="fas fa-check"></i> Age-adapted zones</li>
                 </ul>
-                <a href="activities.html" class="btn">Discover Courses</a>
+                <a href="activites.html" class="btn">Discover Courses</a>
             </div>
         </div>
     </section>
 
-    <!-- Carousel Section (Image right, text left) -->
     <section class="section">
         <div class="split-section reverse">
             <div class="split-image">
-                <img src="images/manege2.jpeg" alt="Children's Carousel">
+                <img src="images/manege2.jpeg" alt="Carousel Ciyaar & Caruur">
             </div>
             <div class="split-content">
                 <h2>Enchanted Carousel</h2>
@@ -624,16 +386,15 @@
                     <li><i class="fas fa-check"></i> Music and lights</li>
                     <li><i class="fas fa-check"></i> Runs continuously</li>
                 </ul>
-                <a href="activities.html" class="btn">See Carousel</a>
+                <a href="activites.html" class="btn">See Carousel</a>
             </div>
         </div>
     </section>
 
-    <!-- Bouncy Castle Section (Image left, text right) -->
     <section class="section section-alt">
         <div class="split-section">
             <div class="split-image">
-                <img src="images/chateau1.jpeg" alt="Bouncy Castle">
+                <img src="images/chateau1.jpeg" alt="Bouncy Castle Ciyaar & Caruur">
             </div>
             <div class="split-content">
                 <h2>Bouncy Castles</h2>
@@ -644,58 +405,57 @@
                     <li><i class="fas fa-check"></i> Secure jumping zones</li>
                     <li><i class="fas fa-check"></i> Constant supervision</li>
                 </ul>
-                <a href="activities.html" class="btn">Discover Structures</a>
+                <a href="activites.html" class="btn">Discover Structures</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>IYAR IYO CARUR</h3>
-                <p>Children's paradise within reach. A safe and fun indoor play space for children aged 0-12 years.</p>
+                <h3>Ciyaar & Caruur</h3>
+                <p>Children's paradise within reach. A safe and fun indoor play space for children aged 1-10 years.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/p/1DdXGeNtMn/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/p/DcbT_TANIys/?stkn=ZXRvbnE1bGNtM3h5" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@ciyaar.iyo.caruur?_r=1&amp;_t=ZS-9A5QrA6UyNZ" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@CiyaarcaruurPlayground" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="activities.html">Activities</a></li>
-                    <li><a href="birthdays.html">Birthdays</a></li>
+                    <li><a href="activites.html">Activities</a></li>
+                    <li><a href="anniversaires.html">Birthdays</a></li>
+                    <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Opening Hours</h3>
                 <ul>
-                    <li>Monday - Friday: 10am - 7pm</li>
-                    <li>Saturday: 9am - 8pm</li>
-                    <li>Sunday: 9am - 6pm</li>
-                    <li>Closed on Tuesdays</li>
+                    <li><i class="fas fa-clock"></i> Sat – Wed: 4pm – 10pm</li>
+                    <li><i class="fas fa-clock"></i> Thu & Fri: 9am – 12pm & 4pm – 10pm</li>
+                    <li><i class="fas fa-star"></i> Holidays: Special hours</li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
                 <ul>
-                    <li><i class="fas fa-phone"></i> +252 63 1234567</li>
-                    <li><i class="fas fa-envelope"></i> info@iyariyocarur.com</li>
+                    
+                    <li><i class="fas fa-phone"></i> +252 63 9178475</li>
+                    <li><i class="fas fa-envelope"></i> Sobaikanano@gmail.com</li>
                     <li><i class="fas fa-map-marker-alt"></i> Jig Jigga Yar, Hargeisa, Somaliland</li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2026 IYAR IYO CARUR - All rights reserved. Made with <i class="fas fa-heart" style="color: #f39c12;"></i> for children</p>
+            <p>&copy; 2026 Ciyaar & Caruur — All rights reserved. Made with <i class="fas fa-heart" style="color:#f39c12;"></i> for children</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu
         const mobileMenu = document.getElementById('mobileMenu');
         const navLinks = document.getElementById('navLinks');
 
@@ -703,49 +463,18 @@
             navLinks.classList.toggle('active');
         });
 
-        // Navigation scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     navLinks.classList.remove('active');
-                }
-            });
-        });
-
-        // Active link highlighting
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
                 }
             });
         });

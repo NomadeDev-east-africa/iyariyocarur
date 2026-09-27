@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>About Us — Ciyaar & Caruur (C&C) | Indoor Playground Hargeisa</title>
+    <meta name="description" content="Learn about Ciyaar & Caruur (C&C), Hargeisa's premier indoor playground. 'Play and Children' in Somali — a safe, fun space for kids aged 1-10. Entry from $1.50. Open Sat–Wed 4pm–10pm, Thu & Fri 9am–12pm & 4pm–10pm.">
+    <meta name="keywords" content="about Ciyaar & Caruur, C&C playground Hargeisa, indoor play Somaliland, kids play centre Hargeisa, ciyalcarur about">
+    <meta name="author" content="Ciyaar & Caruur">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ciyalcarur.com/about.html">
+
+    <meta property="og:title" content="About Ciyaar & Caruur (C&C) — Indoor Playground Hargeisa">
+    <meta property="og:description" content="Founded in Hargeisa, C&C is the go-to indoor playground for families with children aged 1-10. Entry from $1.50. Open daily.">
+    <meta property="og:image" content="https://ciyalcarur.com/images/chateau2.jpeg">
+    <meta property="og:url" content="https://ciyalcarur.com/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ciyaar & Caruur">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Ciyaar & Caruur — Hargeisa Indoor Playground">
+    <meta name="twitter:description" content="The go-to indoor playground for families in Hargeisa, Somaliland. Entry from $1.50, open daily.">
+    <meta name="twitter:image" content="https://ciyalcarur.com/images/chateau2.jpeg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(30,60,114,0.7), rgba(30,60,114,0.8)), url('images/chateau1.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .section-alt { background: linear-gradient(135deg, #fff, #f0f4f8); }
+
+        /* About Intro */
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-intro-content h2 { font-size: 2.5rem; color: #1e3c72; margin-bottom: 1.5rem; }
+        .about-intro-content h2 span { color: #f39c12; font-style: italic; }
+
+        .about-intro-content p {
+            color: #636e72;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-intro-image {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-intro-image img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-intro-image:hover img { transform: scale(1.05); }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            border-color: #f39c12;
+            box-shadow: 0 25px 50px rgba(243,156,18,0.1);
+        }
+
+        .info-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #1e3c72, #2a4a7a);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white; font-size: 2rem;
+        }
+
+        .info-card h3 { font-size: 1.8rem; color: #1e3c72; margin-bottom: 1rem; }
+        .info-card p { color: #636e72; line-height: 1.8; }
+
+        /* Age Groups */
+        .age-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .age-group {
+            background: linear-gradient(135deg, rgba(30,60,114,0.05), rgba(243,156,18,0.05));
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .age-group h4 { font-size: 1.1rem; color: #1e3c72; margin-bottom: 0.5rem; }
+        .age-group .age-range { font-size: 1.8rem; font-weight: 700; color: #f39c12; margin-bottom: 0.5rem; }
+        .age-group p { color: #636e72; font-size: 0.9rem; }
+
+        /* Hours card in info section */
+        .hours-info-card {
+            background: linear-gradient(135deg, rgba(30,60,114,0.05), rgba(243,156,18,0.05));
+            padding: 1.2rem;
+            border-radius: 15px;
+            text-align: left;
+            margin-bottom: 1rem;
+            border-left: 4px solid #f39c12;
+        }
+
+        .hours-info-card h4 { color: #1e3c72; margin-bottom: 0.5rem; font-size: 1rem; }
+        .hours-info-card p { color: #636e72; margin-bottom: 0.3rem; font-size: 0.95rem; }
+
+        /* Pricing Table */
+        .pricing-table {
+            margin-top: 1rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+        }
+
+        .pricing-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .pricing-row:last-child { border-bottom: none; }
+
+        .pricing-row.header {
+            background: linear-gradient(135deg, #1e3c72, #2a4a7a);
+            color: white;
+            font-weight: 700;
+        }
+
+        .pricing-row .duration { font-weight: 600; color: #1e3c72; }
+        .pricing-row .price { color: #f39c12; font-weight: 700; font-size: 1.1rem; }
+
+        .special-note {
+            background: rgba(243,156,18,0.15);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            text-align: center;
+            font-weight: 600;
+            border: 2px solid rgba(243,156,18,0.4);
+        }
+
+        /* Café */
+        .cafe-section {
+            background: linear-gradient(135deg, #fff8e7, #fff);
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cafe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .cafe-content h3 { font-size: 2rem; color: #1e3c72; margin-bottom: 1.5rem; }
+        .cafe-content p { color: #636e72; line-height: 1.8; margin-bottom: 1rem; font-size: 1.1rem; }
+
+        .cafe-features { list-style: none; margin-top: 1.5rem; }
+        .cafe-features li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #636e72;
+        }
+        .cafe-features li i { color: #f39c12; font-size: 1.2rem; }
+
+        .cafe-image { border-radius: 30px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .cafe-image img { width: 100%; height: 100%; object-fit: cover; }
+
+        .rule-badge {
+            background: #f39c12;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Videos */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(30,60,114,0.2);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .video-card-content { padding: 1.5rem; text-align: center; }
+        .video-card-content h3 { color: #1e3c72; margin-bottom: 0.5rem; }
+        .video-card-content p { color: #636e72; }
+
+        .btn-youtube {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #ff0000;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-youtube:hover { background: #cc0000; transform: translateY(-3px); }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a4a7a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .testimonial-card i { font-size: 2rem; color: #f39c12; margin-bottom: 1rem; }
+
+        .testimonial-card > p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author { display: flex; align-items: center; }
+
+        .testimonial-author img {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 3px solid #f39c12;
+            object-fit: cover;
+        }
+
+        .testimonial-author h4 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+        .testimonial-author p { font-size: 0.9rem; opacity: 0.8; margin: 0; }
+
+        @media (max-width: 768px) {
+            .about-intro { grid-template-columns: 1fr; gap: 2rem; }
+            .age-groups { grid-template-columns: 1fr; }
+            .cafe-grid { grid-template-columns: 1fr; }
+
+            .pricing-row {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+                text-align: left;
+                padding: 1rem;
+            }
+
+            .pricing-row.header { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo-container">
+            <img src="images/logo.jpeg" alt="Ciyaar & Caruur Logo" class="logo-img">
+            <a href="index.html" class="logo-text">Ciyaar &amp; <span>Caruur</span></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="activites.html">Activities</a>
+            <a href="anniversaires.html">Birthdays</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div>
+            <h1>About Us</h1>
+            <p>Discover the story behind C&C and our commitment to children's happiness</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="about-intro">
+            <div class="about-intro-content">
+                <h2>Welcome to <span>C&C</span></h2>
+                <p>At Ciyaar & Caruur (or C&C as we lovingly call it), we've created a magical world where children can laugh, play, and grow. Our name means "Play and Children" in Somali, and it perfectly captures our mission: to provide a safe, joyful space for every child who walks through our doors.</p>
+                <p>With 6 letters in each word, C&C rolls off the tongue and represents our commitment to balance: between fun and safety, between energy and calm, between playtime and family time.</p>
+                <p>Founded with love in Hargeisa, we've become the go-to destination for families seeking quality indoor entertainment for children aged 1 to 10 years.</p>
+            </div>
+            <div class="about-intro-image">
+                <img src="images/chateau2.jpeg" alt="Ciyaar & Caruur Indoor Playground Hargeisa">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: linear-gradient(135deg, #1e3c72 0%, #2a4a7a 100%); position: relative; isolation: isolate;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;overflow:hidden;">
+            <div style="position:absolute;top:-50px;right:-50px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle, rgba(243,156,18,0.2) 0%, rgba(243,156,18,0) 70%);"></div>
+            <div style="position:absolute;bottom:-50px;left:-50px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);"></div>
+        </div>
+
+        <h2 class="section-title" style="color:white;">Essential Information</h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.9);">Everything you need to know for a perfect visit</p>
+
+        <div class="info-grid">
+            <div class="info-card" style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);">
+                <div class="info-icon" style="background:linear-gradient(135deg,#f39c12,#e67e22);">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3 style="color:#1e3c72;">Age Groups</h3>
+                <div class="age-groups">
+                    <div class="age-group">
+                        <h4 style="color:#1e3c72;">Little Explorers</h4>
+                        <div class="age-range">1–3 yrs</div>
+                        <p>Soft play area for toddlers</p>
+                    </div>
+                    <div class="age-group">
+                        <h4 style="color:#1e3c72;">Young Adventurers</h4>
+                        <div class="age-range">4–10 yrs</div>
+                        <p>Exciting structures and activities</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card" style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);">
+                <div class="info-icon" style="background:linear-gradient(135deg,#f39c12,#e67e22);">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 style="color:#1e3c72;">Opening Hours</h3>
+                <div class="hours-info-card">
+                    <h4><i class="fas fa-calendar-day" style="color:#f39c12;"></i> Regular Hours</h4>
+                    <p>Saturday – Wednesday: 4:00 PM – 10:00 PM</p>
+                    <p>Thursday & Friday: 9:00 AM – 12:00 PM & 4:00 PM – 10:00 PM</p>
+                </div>
+                <div class="hours-info-card" style="border-left-color:#1e3c72;">
+                    <h4><i class="fas fa-moon" style="color:#f39c12;"></i> Ramadan (Last 10 Days)</h4>
+                    <p>Morning session + Evening session</p>
+                </div>
+            </div>
+
+            <div class="info-card" style="background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);">
+                <div class="info-icon" style="background:linear-gradient(135deg,#f39c12,#e67e22);">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <h3 style="color:#1e3c72;">Entry Prices</h3>
+                <div class="pricing-table">
+                    <div class="pricing-row header">
+                        <span>Duration</span>
+                        <span>Price</span>
+                        <span>Best for</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="duration">1 hour</span>
+                        <span class="price">$4.00</span>
+                        <span>Quick visit</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="duration">30 minutes</span>
+                        <span class="price">$2.50</span>
+                        <span>Short play</span>
+                    </div>
+                    <div class="pricing-row">
+                        <span class="duration">15 minutes</span>
+                        <span class="price">$1.50</span>
+                        <span>Mini session</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="special-note" style="background:rgba(243,156,18,0.2);color:white;border-color:rgba(243,156,18,0.5);">
+            <i class="fas fa-info-circle" style="color:#f39c12;"></i> During school holidays, special hours apply — contact us for details!
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Our Coffee Corner</h2>
+        <p class="section-subtitle">Relax while your little ones play</p>
+
+        <div class="cafe-section">
+            <div class="cafe-grid">
+                <div class="cafe-content">
+                    <h3>Take a Break at Our Café</h3>
+                    <p>While the kids burn off energy, parents can unwind in our comfortable café area. Please note that food and drinks are not permitted inside the play area to maintain safety and cleanliness.</p>
+                    <ul class="cafe-features">
+                        <li><i class="fas fa-coffee"></i> Hot beverages: coffee, tea, hot chocolate</li>
+                        <li><i class="fas fa-glass-water"></i> Cold drinks: juices, soft drinks, water</li>
+                        <li><i class="fas fa-cookie"></i> Kid-friendly snacks and treats</li>
+                        <li><i class="fas fa-mug-hot"></i> Light refreshments for parents</li>
+                    </ul>
+                    <div class="rule-badge">
+                        <i class="fas fa-utensils"></i> Enjoy your snacks in our dedicated café space
+                    </div>
+                </div>
+                <div class="cafe-image">
+                    <img src="images/employersecure.jpeg" alt="Ciyaar & Caruur Café">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <h2 class="section-title">Watch Us in Action</h2>
+        <p class="section-subtitle">See the fun and excitement at C&C</p>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/lOhhWFPa40A" allowfullscreen title="A Day at Ciyaar & Caruur"></iframe>
+                </div>
+                <div class="video-card-content">
+                    <h3>A Day at C&C</h3>
+                    <p>Watch children enjoying our playground</p>
+                    <a href="https://youtu.be/lOhhWFPa40A?si=IqASU1QXwQvZdO5Z" target="_blank" rel="noopener" class="btn-youtube">
+                        <i class="fab fa-youtube"></i> Watch on YouTube
+                    </a>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=CiyaarcaruurPlayground" allowfullscreen title="More videos from Ciyaar & Caruur"></iframe>
+                </div>
+                <div class="video-card-content">
+                    <h3>More Fun Videos</h3>
+                    <p>Check out our YouTube channel for more content</p>
+                    <a href="https://www.youtube.com/@CiyaarcaruurPlayground/shorts" target="_blank" rel="noopener" class="btn-youtube">
+                        <i class="fab fa-youtube"></i> Visit Channel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <h2 class="section-title" style="color:white;">What Parents Say</h2>
+        <p class="section-subtitle" style="color:rgba(255,255,255,0.9);">Real stories from happy families</p>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>My little one absolutely loves coming here! The staff is so caring and attentive. As a young mom, I appreciate how safe and clean everything is. The café is a lifesaver for my coffee fix!</p>
+                <div class="testimonial-author">
+                    <img src="images/jeuneMaman.jpg" alt="Fartun A. testimonial">
+                    <div>
+                        <h4>Fartun A.</h4>
+                        <p>Mother of 2-year-old</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>Finally a place where my 4-year-old and 7-year-old can both have fun! The separate areas for different ages is brilliant. We come here at least twice a week after school.</p>
+                <div class="testimonial-author">
+                    <img src="images/jeuneMaman2.jpg" alt="Hodan M. testimonial">
+                    <div>
+                        <h4>Hodan M.</h4>
+                        <p>Mother of two</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fas fa-quote-left"></i>
+                <p>Best decision to have my daughter's birthday here! The team handled everything perfectly. All the parents were impressed by the facilities. We'll definitely be regulars at C&C!</p>
+                <div class="testimonial-author">
+                    <img src="images/petitefille.jpg" alt="Nasra K. testimonial">
+                    <div>
+                        <h4>Nasra K.</h4>
+                        <p>Happy parent</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ciyaar & Caruur</h3>
+                <p>Children's paradise within reach. A safe and fun indoor play space for children aged 1-10 years.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/p/1DdXGeNtMn/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/p/DcbT_TANIys/?stkn=ZXRvbnE1bGNtM3h5" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@ciyaar.iyo.caruur?_r=1&amp;_t=ZS-9A5QrA6UyNZ" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@CiyaarcaruurPlayground" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="activites.html">Activities</a></li>
+                    <li><a href="anniversaires.html">Birthdays</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul>
+                    <li><i class="fas fa-clock"></i> Sat – Wed: 4pm – 10pm</li>
+                    <li><i class="fas fa-clock"></i> Thu & Fri: 9am – 12pm & 4pm – 10pm</li>
+                    <li><i class="fas fa-star"></i> Holidays: Special hours</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-phone"></i> +252 63 1234567</li>
+                    <li><i class="fas fa-envelope"></i> info@ciyalcarur.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Jig Jigga Yar, Hargeisa</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 Ciyaar & Caruur (C&C) — All rights reserved. Made with <i class="fas fa-heart" style="color:#f39c12;"></i> for children</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.info-card, .testimonial-card, .video-card, .cafe-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
